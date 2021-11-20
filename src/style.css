@@ -105,3 +105,10 @@ a {
 .date-and-time {
   color: #f6e5e5;
 }
+.search-button {
+  padding: 0 20px;
+}
+
+.search-button:hover > .fa-search {
+  color: black;
+}

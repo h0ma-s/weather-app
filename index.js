@@ -95,8 +95,6 @@ let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", handleSearch);
 
 let toFahrenheit = document.querySelector("#to-fahrenheit");
-let toCelcius = document.querySelector("#to-celcius");
 toFahrenheit.addEventListener("click", changeToFahrenheit);
-toCelcius.addEventListener("click", changeToCelcius);
 let currentLocation = document.querySelector(".btn-current-location");
 currentLocation.addEventListener("click", getLocation);
