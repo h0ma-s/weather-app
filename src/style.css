@@ -112,3 +112,11 @@ a {
 .search-button:hover > .fa-search {
   color: black;
 }
+.source-code {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.code-link {
+  color: rgb(36, 34, 34);
+}
