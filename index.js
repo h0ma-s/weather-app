@@ -22,37 +22,6 @@ function handleSearch(event) {
   let apiUrl = `${endPoint}?q=${city.value}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showCurrentTemperature);
 }
-function changeUnitToF(element) {
-  element.innerHTML = "°F";
-}
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let city = document.querySelector("h1").innerHTML;
-
-  let temperatureUnits = document.querySelectorAll(".temp-unit");
-  temperatureUnits.forEach(changeUnitToF);
-  let apiKey = "e595356bb77e874bab1cb87dc84b6d45";
-  let unit = "imperial";
-  let endPoint = `https://api.openweathermap.org/data/2.5/weather`;
-  let apiUrl = `${endPoint}?q=${city}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showCurrentTemperature);
-}
-
-function getWeatherForCurrentLocation(position) {
-  console.log(position);
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiKey = "e595356bb77e874bab1cb87dc84b6d45";
-  let unit = "metric";
-  let endPoint = `https://api.openweathermap.org/data/2.5/weather`;
-
-  let apiUrl = `${endPoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}
-`;
-  axios.get(apiUrl).then(showCurrentTemperature);
-}
-function getLocation() {
-  navigator.geolocation.getCurrentPosition(getWeatherForCurrentLocation);
-}
 
 function formatTime(time) {
   let days = [
@@ -93,8 +62,3 @@ dateAndTime.innerHTML = formatTime(currentDate);
 
 let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", handleSearch);
-
-let toFahrenheit = document.querySelector("#to-fahrenheit");
-toFahrenheit.addEventListener("click", changeToFahrenheit);
-let currentLocation = document.querySelector(".btn-current-location");
-currentLocation.addEventListener("click", getLocation);
