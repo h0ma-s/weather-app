@@ -1,5 +1,4 @@
 function showCurrentTemperature(response) {
-  console.log(response);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let currentTemperatureMax = document.querySelector("#today-high-temp");
@@ -11,19 +10,26 @@ function showCurrentTemperature(response) {
   let h1 = document.querySelector("h1");
 
   h1.innerHTML = response.data.name;
+  let dateAndTime = document.querySelector(".date-and-time");
+  dateAndTime.innerHTML = formatTime(response.data.dt * 1000);
 }
 
 function handleSearch(event) {
   event.preventDefault();
   let city = document.querySelector("#search-city");
+  console.log(city.value);
+  getWeather(city.value);
+}
+function getWeather(city) {
   let apiKey = "e595356bb77e874bab1cb87dc84b6d45";
   let unit = "metric";
   let endPoint = `https://api.openweathermap.org/data/2.5/weather`;
-  let apiUrl = `${endPoint}?q=${city.value}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `${endPoint}?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showCurrentTemperature);
 }
 
-function formatTime(time) {
+function formatTime(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -47,18 +53,18 @@ function formatTime(time) {
     "November",
     "December",
   ];
-  let currentDay = days[time.getDay()];
-  let currentTime = time.toLocaleTimeString([], {
+  let currentDay = days[date.getDay()];
+  let currentTime = date.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
-  let currentMonth = months[time.getMonth()];
-  let currentDateofMonth = time.getDate();
+
+  let currentMonth = months[date.getMonth()];
+  let currentDateofMonth = date.getDate();
   return `${currentDay} ${currentTime} <br/> ${currentMonth}, ${currentDateofMonth}`;
 }
-let currentDate = new Date();
-let dateAndTime = document.querySelector(".date-and-time");
-dateAndTime.innerHTML = formatTime(currentDate);
 
+let city = "london";
+getWeather(city);
 let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", handleSearch);
