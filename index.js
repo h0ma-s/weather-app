@@ -12,6 +12,13 @@ function showCurrentTemperature(response) {
   h1.innerHTML = response.data.name;
   let dateAndTime = document.querySelector(".date-and-time");
   dateAndTime.innerHTML = formatTime(response.data.dt * 1000);
+
+  let currentIcon = document.querySelector("#current-weather-icon");
+  currentIcon.setAttribute(
+    "src",
+    `media/icons/${response.data.weather[0].icon}.svg`
+  );
+  currentIcon.setAttribute("alt", `${response.data.weather[0].main}`);
 }
 
 function handleSearch(event) {

@@ -59,10 +59,7 @@ a {
 .day {
   margin: 10px 0;
 }
-.today-weather-icon {
-  font-size: 100px;
-  padding: 10px 0 10px 60px;
-}
+
 .current-temp {
   font-size: 50px;
   font-weight: 500;
@@ -122,4 +119,8 @@ a {
 }
 .code-link {
   color: rgb(36, 34, 34);
+}
+#current-weather-icon {
+  float: right;
+  width: 135px;
 }
