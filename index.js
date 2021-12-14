@@ -24,7 +24,6 @@ function showCurrentTemperature(response) {
 function handleSearch(event) {
   event.preventDefault();
   let city = document.querySelector("#search-city");
-  console.log(city.value);
   getWeather(city.value);
 }
 function getWeather(city) {

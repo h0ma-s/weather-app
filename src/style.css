@@ -4,7 +4,7 @@ h1 {
 }
 h3 {
   font-size: 20px;
-  font-weight: normal;
+  font-weight: 300;
 }
 a {
   text-decoration: none;
@@ -61,15 +61,17 @@ a {
 }
 
 .current-temp {
-  font-size: 50px;
-  font-weight: 500;
+  font-size: 55px;
+  font-weight: 400;
   line-height: 60px;
   padding-top: 30px;
 }
 .current-temp-unit {
-  font-size: 37px;
+  font-size: 34px;
   position: relative;
-  top: -13px;
+  top: -25px;
+  padding-left: 5px;
+  font-weight: lighter;
 }
 .today-temperature {
   font-size: 24px;
@@ -96,11 +98,7 @@ a {
 .high {
   font-weight: bold;
 }
-.change-unit {
-  margin-top: 35px;
-  margin-bottom: 15px;
-  text-align: center;
-}
+
 .icon,
 .date-and-time {
   color: #f6e5e5;
@@ -123,4 +121,7 @@ a {
 #current-weather-icon {
   float: right;
   width: 135px;
+}
+.today-temp-unit {
+  font-weight: lighter;
 }
