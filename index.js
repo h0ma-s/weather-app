@@ -14,6 +14,8 @@ function showCurrentTemperature(response) {
   dateAndTime.innerHTML = formatTime(response.data.dt * 1000);
 
   celciusCurrentTemp = response.data.main.temp;
+  celciusTodaysMaxTemp = response.data.main.temp_max;
+  celciusTodaysMinTemp = response.data.main.temp_min;
 
   let currentIcon = document.querySelector("#current-weather-icon");
   currentIcon.setAttribute(
@@ -78,10 +80,22 @@ function convertToFahrenheit(event) {
     "#current-temperature"
   );
   currentTemperatureElement.innerHTML = fahrenheitCurrentTemp;
+
+  let fahrenheitTodaysMaxTemp = Math.round((celciusTodaysMaxTemp * 9) / 5 + 32);
+  let todaysMaxTempElement = document.querySelector("#today-high-temp");
+  todaysMaxTempElement.innerHTML = fahrenheitTodaysMaxTemp;
+
+  let fahrenheitTodaysMinTemp = Math.round((celciusTodaysMinTemp * 9) / 5 + 32);
+  let todaysMinTempElement = document.querySelector("#today-low-temp");
+  todaysMinTempElement.innerHTML = fahrenheitTodaysMinTemp;
+
   let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
   fahrenheitLinkElement.classList.add("active");
   let celciusLinkElement = document.querySelector("#celcius-link");
   celciusLinkElement.classList.remove("active");
+
+  let unitsElements = document.querySelectorAll(".today-temp-unit");
+  unitsElements.forEach((element) => (element.innerHTML = "°F"));
 }
 
 function convertToCelcius(event) {
@@ -90,13 +104,23 @@ function convertToCelcius(event) {
     "#current-temperature"
   );
   currentTemperatureElement.innerHTML = Math.round(celciusCurrentTemp);
+  let todaysMaxTempElement = document.querySelector("#today-high-temp");
+  todaysMaxTempElement.innerHTML = Math.round(celciusTodaysMaxTemp);
+  let todaysMinTempElement = document.querySelector("#today-low-temp");
+  todaysMinTempElement.innerHTML = Math.round(celciusTodaysMinTemp);
+
   let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
   fahrenheitLinkElement.classList.remove("active");
   let celciusLinkElement = document.querySelector("#celcius-link");
   celciusLinkElement.classList.add("active");
+
+  let unitsElements = document.querySelectorAll(".today-temp-unit");
+  unitsElements.forEach((element) => (element.innerHTML = "°C"));
 }
 
 let celciusCurrentTemp = null;
+let celciusTodaysMaxTemp = null;
+let celciusTodaysMinTemp = null;
 
 let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", handleSearch);
