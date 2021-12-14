@@ -6,7 +6,11 @@ function showCurrentTemperature(response) {
   let currentTemperatureMin = document.querySelector("#today-low-temp");
   currentTemperatureMin.innerHTML = Math.round(response.data.main.temp_min);
   let weatherDescription = document.querySelector(".description");
-  weatherDescription.innerHTML = response.data.weather[0].main;
+  weatherDescription.innerHTML = response.data.weather[0].description;
+  let windSpeedElement = document.querySelector("#wind");
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
   let h1 = document.querySelector("h1");
 
   h1.innerHTML = response.data.name;
@@ -27,6 +31,12 @@ function showCurrentTemperature(response) {
 
 function handleSearch(event) {
   event.preventDefault();
+  let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
+  fahrenheitLinkElement.classList.remove("active");
+  let celciusLinkElement = document.querySelector("#celcius-link");
+  celciusLinkElement.classList.add("active");
+  let unitsElements = document.querySelectorAll(".today-temp-unit");
+  unitsElements.forEach((element) => (element.innerHTML = "°C"));
   let city = document.querySelector("#search-city");
   getWeather(city.value);
 }
