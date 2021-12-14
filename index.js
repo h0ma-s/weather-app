@@ -13,6 +13,8 @@ function showCurrentTemperature(response) {
   let dateAndTime = document.querySelector(".date-and-time");
   dateAndTime.innerHTML = formatTime(response.data.dt * 1000);
 
+  celciusCurrentTemp = response.data.main.temp;
+
   let currentIcon = document.querySelector("#current-weather-icon");
   currentIcon.setAttribute(
     "src",
@@ -69,8 +71,40 @@ function formatTime(timestamp) {
   let currentDateofMonth = date.getDate();
   return `${currentDay} ${currentTime} <br/> ${currentMonth}, ${currentDateofMonth}`;
 }
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitCurrentTemp = Math.round((celciusCurrentTemp * 9) / 5 + 32);
+  let currentTemperatureElement = document.querySelector(
+    "#current-temperature"
+  );
+  currentTemperatureElement.innerHTML = fahrenheitCurrentTemp;
+  let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
+  fahrenheitLinkElement.classList.add("active");
+  let celciusLinkElement = document.querySelector("#celcius-link");
+  celciusLinkElement.classList.remove("active");
+}
 
-let city = "london";
-getWeather(city);
+function convertToCelcius(event) {
+  event.preventDefault();
+  let currentTemperatureElement = document.querySelector(
+    "#current-temperature"
+  );
+  currentTemperatureElement.innerHTML = Math.round(celciusCurrentTemp);
+  let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
+  fahrenheitLinkElement.classList.remove("active");
+  let celciusLinkElement = document.querySelector("#celcius-link");
+  celciusLinkElement.classList.add("active");
+}
+
+let celciusCurrentTemp = null;
+
 let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", handleSearch);
+
+let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
+fahrenheitLinkElement.addEventListener("click", convertToFahrenheit);
+
+let celciusLinkElement = document.querySelector("#celcius-link");
+celciusLinkElement.addEventListener("click", convertToCelcius);
+
+getWeather("london");

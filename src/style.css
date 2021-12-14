@@ -61,23 +61,32 @@ a {
 }
 
 .current-temp {
-  font-size: 55px;
-  font-weight: 400;
+  font-size: 60px;
+  font-weight: 300;
   line-height: 60px;
-  padding-top: 30px;
+  position: relative;
+  top: 10px;
 }
 .current-temp-unit {
-  font-size: 34px;
+  font-size: 33px;
   position: relative;
   top: -25px;
-  padding-left: 5px;
   font-weight: lighter;
+}
+.current-temp-unit .active {
+  font-weight: 300;
+}
+.current-temp-unit .active:hover {
+  cursor: default;
+  color: #faf7f2;
 }
 .today-temperature {
   font-size: 24px;
+  font-weight: normal;
   display: block;
   text-align: center;
   padding-left: 20px;
+  padding-top: 5px;
 }
 .description {
   font-size: 26px;
@@ -124,4 +133,14 @@ a {
 }
 .today-temp-unit {
   font-weight: lighter;
+  font-size: 15px;
+  padding-left: 3px;
+  position: relative;
+  top: -11px;
+}
+#today-high-temp {
+  font-weight: 500;
+}
+#today-low-temp {
+  font-weight: 200;
 }
