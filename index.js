@@ -1,3 +1,22 @@
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="day">
+              <h3>${day}</h3>
+              <i class="fas fa-cloud-rain weather-icon icon"></i> <br />
+              <span class="high-low"> <span class="high">15°</span> \ 10°</span>
+            </div>
+  `;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showCurrentTemperature(response) {
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
@@ -27,6 +46,7 @@ function showCurrentTemperature(response) {
     `media/icons/${response.data.weather[0].icon}.svg`
   );
   currentIcon.setAttribute("alt", `${response.data.weather[0].main}`);
+  displayForecast();
 }
 
 function handleSearch(event) {
