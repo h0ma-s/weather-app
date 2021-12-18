@@ -31,10 +31,18 @@
             id="search-city"
           />
           <button class="btn btn-outline-light search-button" type="submit">
-            <i class="fas fa-search"></i>
+            <span
+              class="spinner-border spinner-border-sm"
+              id="spinner"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Loading...</span>
+            <i class="fas fa-search search-icon hide"></i>
           </button>
         </div>
       </form>
+
       <div class="row">
         <div class="col-8">
           <div class="row today-date-temp">

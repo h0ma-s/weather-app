@@ -3,8 +3,8 @@ h1 {
   line-height: 60px;
 }
 h3 {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 400;
   margin-bottom: 1px;
 }
 a {
@@ -23,17 +23,15 @@ a {
 .current,
 .today-date-temp,
 .day {
-  border: 1px solid rgb(0 0 0 / 20%);
+  border: 1px solid rgb(0 0 0 / 14%);
   border-radius: 5px;
   box-shadow: 5px 5px 10px rgb(0 0 0 / 5%);
 }
-.day:hover {
-  cursor: pointer;
-}
+
 .container {
   max-width: 50%;
-  padding: 0 30px;
-  margin-top: 25px;
+  padding: 0 25px;
+  margin-top: 15px;
 
   background: radial-gradient(
     circle at 52.1% -29.6%,
@@ -52,13 +50,11 @@ a {
   font-size: 60px;
 }
 .today-date-temp {
-  margin: 40px 0;
+  margin: 28px 0;
 }
-.weather-icon {
-  font-size: 40px;
-}
+
 .day {
-  margin: 10px 0;
+  margin: 6px 0;
 }
 
 .current-temp {
@@ -71,7 +67,7 @@ a {
 .current-temp-unit {
   font-size: 33px;
   position: relative;
-  top: -25px;
+  top: -20px;
   font-weight: lighter;
 }
 .current-temp-unit .active {
@@ -98,7 +94,7 @@ a {
 }
 .weather-forecast {
   text-align: center;
-  max-width: 180px;
+  max-width: 150px;
   margin-bottom: 15px;
 }
 .search-bar {
@@ -111,7 +107,6 @@ a {
   font-weight: bold;
 }
 
-.icon,
 .date-and-time {
   color: #f6e5e5;
 }
@@ -124,7 +119,7 @@ a {
 }
 .source-code {
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 5px;
 }
 .code-link {
@@ -154,8 +149,12 @@ a {
   padding-top: 5px;
 }
 .forecast-icon {
-  width: 40px;
+  width: 35px;
+  padding: 3px 0;
 }
 .high-low {
   font-size: 15px;
+}
+.search-button .hide {
+  visibility: hidden;
 }

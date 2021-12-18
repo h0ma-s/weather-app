@@ -26,9 +26,11 @@ function displayForecast(response) {
       <img src="media/icons/${
         forecast.weather[0].icon
       }.svg" alt="" class="forecast-icon"> <br />
-     <span class="high-low"> <span class="high">${Math.round(
+     <span class="high-low"> <span class="high max-forecast">${Math.round(
        forecast.temp.max
-     )}°</span> / ${Math.round(forecast.temp.min)}°</span>
+     )}°</span> / <span class="min-forecast">${Math.round(
+          forecast.temp.min
+        )}</span>°</span>
        </div>
        `;
       forecastElement.innerHTML = forecastHTML;
@@ -83,12 +85,21 @@ function handleSearch(event) {
   let city = document.querySelector("#search-city");
   getWeather(city.value);
 }
+
 function getWeather(city) {
   let apiKey = "e595356bb77e874bab1cb87dc84b6d45";
   let unit = "metric";
   let endPoint = `https://api.openweathermap.org/data/2.5/weather`;
   let apiUrl = `${endPoint}?q=${city}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showCurrentTemperature);
+
+  axios
+    .get(apiUrl)
+    .then(showCurrentTemperature)
+    .catch((error) => {
+      if (error) {
+        alert("Oops! Something's not right. Have you checked your spelling?");
+      }
+    });
 }
 
 function formatTime(timestamp) {
@@ -124,7 +135,7 @@ function formatTime(timestamp) {
 
   let currentMonth = months[date.getMonth()];
   let currentDateofMonth = date.getDate();
-  return `${currentDay} ${currentTime} <br/> ${currentMonth}, ${currentDateofMonth}`;
+  return `${currentDay} ${currentTime} <br/> ${currentDateofMonth} ${currentMonth}`;
 }
 function convertToFahrenheit(event) {
   event.preventDefault();
