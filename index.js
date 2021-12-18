@@ -43,7 +43,7 @@ function getForecast(coordinations) {
   let apiKey = "e595356bb77e874bab1cb87dc84b6d45";
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinations.lat}&lon=${coordinations.lon}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(stopSpinner);
 }
 
 function showCurrentTemperature(response) {
@@ -94,7 +94,7 @@ function getWeather(city) {
 
   axios
     .get(apiUrl)
-    .then(stopSpinner)
+    .then(showCurrentTemperature)
     .catch((error) => {
       if (error) {
         alert("Oops! Something's not right. Have you checked your spelling?");
@@ -108,8 +108,7 @@ function stopSpinner(response) {
     spinner.classList.add("hide");
     let searchIcon = document.querySelector(".search-icon");
     searchIcon.classList.remove("hide");
-
-    showCurrentTemperature(response);
+    displayForecast(response);
   }
 }
 
