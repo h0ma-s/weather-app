@@ -94,12 +94,23 @@ function getWeather(city) {
 
   axios
     .get(apiUrl)
-    .then(showCurrentTemperature)
+    .then(stopSpinner)
     .catch((error) => {
       if (error) {
         alert("Oops! Something's not right. Have you checked your spelling?");
       }
     });
+}
+
+function stopSpinner(response) {
+  if (response) {
+    let spinner = document.querySelector("#spinner");
+    spinner.classList.add("hide");
+    let searchIcon = document.querySelector(".search-icon");
+    searchIcon.classList.remove("hide");
+
+    showCurrentTemperature(response);
+  }
 }
 
 function formatTime(timestamp) {
