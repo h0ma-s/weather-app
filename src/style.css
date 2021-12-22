@@ -1,15 +1,11 @@
 h1 {
-  font-size: 42px;
-  line-height: 60px;
+  font-size: 39px;
+  line-height: 54px;
 }
 h3 {
   font-size: 15px;
   font-weight: 400;
   margin-bottom: 1px;
-}
-a {
-  text-decoration: none;
-  color: #faf7f2;
 }
 
 .fa-search {
@@ -53,6 +49,10 @@ a {
   margin: 28px 0;
 }
 
+.date-and-time {
+  font-size: 15px;
+}
+
 .day {
   margin: 6px 0;
 }
@@ -65,18 +65,12 @@ a {
   top: 10px;
 }
 .current-temp-unit {
-  font-size: 33px;
+  font-size: 36px;
   position: relative;
   top: -20px;
-  font-weight: lighter;
+  font-weight: 200;
 }
-.current-temp-unit .active {
-  font-weight: 300;
-}
-.current-temp-unit .active:hover {
-  cursor: default;
-  color: #faf7f2;
-}
+
 .today-temperature {
   font-size: 24px;
   font-weight: normal;
@@ -131,10 +125,10 @@ a {
 }
 .today-temp-unit {
   font-weight: lighter;
-  font-size: 15px;
+  font-size: 16px;
   padding-left: 3px;
   position: relative;
-  top: -11px;
+  top: -10px;
 }
 #today-high-temp {
   font-weight: 500;

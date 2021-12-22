@@ -76,12 +76,7 @@ function showCurrentTemperature(response) {
 
 function handleSearch(event) {
   event.preventDefault();
-  let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
-  fahrenheitLinkElement.classList.remove("active");
-  let celciusLinkElement = document.querySelector("#celcius-link");
-  celciusLinkElement.classList.add("active");
-  let unitsElements = document.querySelectorAll(".today-temp-unit");
-  unitsElements.forEach((element) => (element.innerHTML = "°C"));
+
   let city = document.querySelector("#search-city");
   getWeather(city.value);
 }
@@ -147,62 +142,8 @@ function formatTime(timestamp) {
   let currentDateofMonth = date.getDate();
   return `${currentDay} ${currentTime} <br/> ${currentDateofMonth} ${currentMonth}`;
 }
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitCurrentTemp = Math.round((celciusCurrentTemp * 9) / 5 + 32);
-  let currentTemperatureElement = document.querySelector(
-    "#current-temperature"
-  );
-  currentTemperatureElement.innerHTML = fahrenheitCurrentTemp;
-
-  let fahrenheitTodaysMaxTemp = Math.round((celciusTodaysMaxTemp * 9) / 5 + 32);
-  let todaysMaxTempElement = document.querySelector("#today-high-temp");
-  todaysMaxTempElement.innerHTML = fahrenheitTodaysMaxTemp;
-
-  let fahrenheitTodaysMinTemp = Math.round((celciusTodaysMinTemp * 9) / 5 + 32);
-  let todaysMinTempElement = document.querySelector("#today-low-temp");
-  todaysMinTempElement.innerHTML = fahrenheitTodaysMinTemp;
-
-  let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
-  fahrenheitLinkElement.classList.add("active");
-  let celciusLinkElement = document.querySelector("#celcius-link");
-  celciusLinkElement.classList.remove("active");
-
-  let unitsElements = document.querySelectorAll(".today-temp-unit");
-  unitsElements.forEach((element) => (element.innerHTML = "°F"));
-}
-
-function convertToCelcius(event) {
-  event.preventDefault();
-  let currentTemperatureElement = document.querySelector(
-    "#current-temperature"
-  );
-  currentTemperatureElement.innerHTML = Math.round(celciusCurrentTemp);
-  let todaysMaxTempElement = document.querySelector("#today-high-temp");
-  todaysMaxTempElement.innerHTML = Math.round(celciusTodaysMaxTemp);
-  let todaysMinTempElement = document.querySelector("#today-low-temp");
-  todaysMinTempElement.innerHTML = Math.round(celciusTodaysMinTemp);
-
-  let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
-  fahrenheitLinkElement.classList.remove("active");
-  let celciusLinkElement = document.querySelector("#celcius-link");
-  celciusLinkElement.classList.add("active");
-
-  let unitsElements = document.querySelectorAll(".today-temp-unit");
-  unitsElements.forEach((element) => (element.innerHTML = "°C"));
-}
-
-let celciusCurrentTemp = null;
-let celciusTodaysMaxTemp = null;
-let celciusTodaysMinTemp = null;
 
 let searchEngine = document.querySelector("#search-engine");
 searchEngine.addEventListener("submit", handleSearch);
-
-let fahrenheitLinkElement = document.querySelector("#fahrenheit-link");
-fahrenheitLinkElement.addEventListener("click", convertToFahrenheit);
-
-let celciusLinkElement = document.querySelector("#celcius-link");
-celciusLinkElement.addEventListener("click", convertToCelcius);
 
 getWeather("london");
